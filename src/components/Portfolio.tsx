@@ -2,6 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, TrendingUp } from 'lucide-react';
 import projectEcommerce from '@/assets/project-ecommerce.jpg';
+import cantaconnico from '@/assets/cantaconnico.jpeg';
 import projectCorporate from '@/assets/project-corporate.jpg';
 import projectPortfolio from '@/assets/project-portfolio.jpg';
 
@@ -9,13 +10,14 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: 'TechStore E-commerce',
-      client: 'TechStore Solutions',
-      description: 'Plataforma de e-commerce moderna con sistema de pagos integrado y experiencia de compra optimizada.',
-      image: projectEcommerce,
-      results: '+150% conversiones',
-      tags: ['E-commerce', 'React', 'UX/UI'],
-      metrics: { sales: '+150%', traffic: '+89%', conversion: '+220%' }
+      title: 'Canta con Nico',
+      client: 'Clases de Canto en Menorca',
+      description: 'Plataforma web para inscribirse fácilmente a clases de canto, ya sea en una escuela o con un profesor particular. Incluye información de cursos, horarios y contacto directo con el profesor.',
+      image: cantaconnico,
+      link: 'https://clasesdecantoenmenorca.com/',
+      results: '📈 +85% solicitudes de inscripción',
+      tags: ['Clases de Canto', 'Música', 'Educación'],
+      metrics: { 'Inscripción': '🎤 +70%', 'Alumnos': '⭐ +95%', 'Satisfacción': '📈 +85%' }
     },
     {
       id: 2,
@@ -55,14 +57,14 @@ const Portfolio = () => {
         {/* Projects Grid */}
         <div className="space-y-16">
           {projects.map((project, index) => (
+            <div key={project.id} className="max-w-6xl mx-auto">
             <Card 
-              key={project.id} 
               className={`overflow-hidden group hover:shadow-elegant transition-all duration-500 border-border ${
                 index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
               } lg:flex`}
             >
               {/* Project Image */}
-              <div className="lg:w-1/2 relative overflow-hidden">
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="lg:w-5/12 relative overflow-hidden block">
                 <img 
                   src={project.image}
                   alt={project.title}
@@ -72,10 +74,10 @@ const Portfolio = () => {
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <ExternalLink className="h-6 w-6 text-white" />
                 </div>
-              </div>
+              </a>
 
               {/* Project Content */}
-              <CardContent className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+              <CardContent className="lg:w-7/12 p-8 lg:p-12 flex flex-col justify-center">
                 <div className="space-y-6">
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2">
@@ -125,6 +127,7 @@ const Portfolio = () => {
                 </div>
               </CardContent>
             </Card>
+            </div>
           ))}
         </div>
       </div>
